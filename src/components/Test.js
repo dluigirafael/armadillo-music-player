@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import "../style/App.scss";
-
 import { connect } from "react-redux";
-import Test from "./Test";
 import { increaseCounter, decreaseCounter } from "../redux/Counter/counter.actions";
 
-function App(reduxProps) {
+function Test(reduxProps) {
   return (
-    <div className="App">
-      <div>Count: {reduxProps.count}</div>
-      <Test />
+    <div>
+      <button onClick={() => reduxProps.increaseCounter()}>Increase Count</button>
+      <button onClick={() => reduxProps.decreaseCounter()}>Decrease Count</button>
     </div>
   );
 }
+
 const mapStateToProps = (state) => {
   return {
     count: state.counter.count,
@@ -27,4 +24,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
