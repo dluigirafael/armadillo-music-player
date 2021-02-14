@@ -10,12 +10,14 @@ function Test(reduxProps) {
       <button onClick={() => reduxProps.resetCounter()}>Reset Count</button>
       <input
         type="text"
+        pattern="[0-9]{10}"
         placeholder="test"
         onInput={(e) => {
-          updateInput(e.target.value);
+          e.target.value = e.target.value.replace(/[^0-9]/g, "");
+          reduxProps.updateInput(e.target.value);
         }}
       />
-      <button onClick={() => reduxProps.increaseCounterBy(reduxProps.input)}>Increase Count By</button>
+      <button onClick={() => reduxProps.increaseCounterBy(reduxProps.input)}>Increase Count By </button>
     </div>
   );
 }
@@ -23,7 +25,7 @@ function Test(reduxProps) {
 const mapStateToProps = (state) => {
   return {
     count: state.counter.count,
-    input: state.counter.input,
+    input: state.input.input,
   };
 };
 
@@ -32,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
     increaseCounter: () => dispatch(increaseCounter()),
     decreaseCounter: () => dispatch(decreaseCounter()),
     resetCounter: () => dispatch(resetCounter()),
-    increaseCounterBy: (payload) => dispatch(increaseCounterBy(payload)),
+    increaseCounterBy: (nr) => dispatch(increaseCounterBy(nr)),
     updateInput: (payload) => dispatch(updateInput(payload)),
   };
 };

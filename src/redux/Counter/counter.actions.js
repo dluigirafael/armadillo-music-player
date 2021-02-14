@@ -18,8 +18,9 @@ export const resetCounter = () => {
   };
 };
 
-export const increaseCounterBy = () => {
+export const increaseCounterBy = (by) => {
   return {
     type: "INCREMENT_BY",
+    payload: by,
   };
 };

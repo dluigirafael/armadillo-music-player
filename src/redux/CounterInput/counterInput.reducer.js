@@ -9,7 +9,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     case "UPDATE_INPUT":
       return {
         ...state,
-        input: (state.input = action.payload),
+        input: (action.payload !== "NaN") ? (state.input = action.payload) : (state.input = 0),
       };
     default:
       return state;

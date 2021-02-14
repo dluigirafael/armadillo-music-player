@@ -24,7 +24,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     case "INCREMENT_BY":
       return {
         ...state,
-        count: (state.count += action.payload),
+        count: state.count + parseInt(action.payload),
       };
 
     default:
