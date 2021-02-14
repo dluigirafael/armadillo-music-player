@@ -1,4 +1,3 @@
-// import { INCREMENT, DECREMENT } from "./counter.types";
 
 const INITIAL_STATE = {
   count: 0,

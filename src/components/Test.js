@@ -25,7 +25,7 @@ function Test(reduxProps) {
 const mapStateToProps = (state) => {
   return {
     count: state.counter.count,
-    input: state.input.input,
+    input: state.input.inputVal,
   };
 };
 
