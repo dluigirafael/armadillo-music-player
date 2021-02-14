@@ -11,3 +11,15 @@ export const decreaseCounter = () => {
     type: "DECREMENT",
   };
 };
+
+export const resetCounter = () => {
+  return {
+    type: "RESET",
+  };
+};
+
+export const increaseCounterBy = () => {
+  return {
+    type: "INCREMENT_BY",
+  };
+};
