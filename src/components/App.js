@@ -1,17 +1,34 @@
 import React from "react";
 import "../style/App.scss";
-import { fs } from "../fs";
 
-function App() {
+import { connect } from "react-redux";
+// import Test from "./Test";
+// import { increaseCounter, decreaseCounter, resetCounter } from "../redux/Counter/counter.actions";
+
+function App(reduxProps) {
   return (
     <div className="App">
+      {/* <div>Count: {reduxProps.count}</div>
+      <div>Input: {reduxProps.input}</div>
+      <Test /> */}
       <h1>test</h1>
-      <button onClick={fs}> test</button>
-      <audio controls>
-        <source src="horse.mp3" type="audio/mpeg" />
-      </audio>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    // count: state.counter.count,
+    // input: state.input.inputVal,
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // increaseCounter: () => dispatch(increaseCounter()),
+    // decreaseCounter: () => dispatch(decreaseCounter()),
+    // resetCounter: () => dispatch(resetCounter()),
+  };
+};
+
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
