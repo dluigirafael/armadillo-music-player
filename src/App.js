@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/app.scss";
+import "./style/app.scss";
 
 import { connect } from "react-redux";
 // import Test from "./Test";
