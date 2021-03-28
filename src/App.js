@@ -21,7 +21,7 @@ function App(reduxProps) {
   const [songs, setSongs] = useState(Data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [libraryStatus, setLibraryStatus] = useState(false);
+  // const [libraryStatus, setLibraryStatus] = useState(false);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
@@ -30,11 +30,13 @@ function App(reduxProps) {
 
   const audioRef = useRef(null);
   return (
-    <div className={`App ${libraryStatus ? " library-active" : " "}`}>
+    <div
+      className={`App ${reduxProps.libraryStatus ? " library-active" : " "}`}
+    >
       <div>Count: {reduxProps.count}</div>
       <div>Input: {reduxProps.input}</div>
       <Test />
-      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
+      <Nav />
       <Song currentSong={currentSong} />
       <Player
         currentSong={currentSong}
@@ -53,7 +55,7 @@ function App(reduxProps) {
         setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setSongs={setSongs}
-        libraryStatus={libraryStatus}
+        reduxProps={reduxProps}
       />
     </div>
   );
@@ -62,6 +64,7 @@ const mapStateToProps = (state) => {
   return {
     count: state.counter.count,
     input: state.input.inputVal,
+    libraryStatus: state.libraryStatus.status,
   };
 };
 
