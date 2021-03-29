@@ -23,14 +23,4 @@ const Library = ({ songs, setCurrentSong, audioRef, isPlaying, setSongs }) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     libraryStatus: state.libraryStatus.status,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {};
-// };
-
 export default Library;

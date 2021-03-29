@@ -10,7 +10,7 @@ import Library from "./components/Library";
 import Nav from "./components/Nav";
 import Data from "./data";
 
-function App(reduxProps) {
+function App() {
   const libraryStatus = useSelector((state) => state.libraryStatus.status);
 
   const [songs, setSongs] = useState(Data());
@@ -44,7 +44,6 @@ function App(reduxProps) {
         setCurrentSong={setCurrentSong}
         isPlaying={isPlaying}
         setSongs={setSongs}
-        reduxProps={reduxProps}
       />
     </div>
   );

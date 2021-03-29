@@ -5,7 +5,7 @@ import { switchLibraryStatus } from "../redux/LibraryStatus/libraryStatus.action
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
-function Nav(reduxProps) {
+function Nav() {
   const libraryStatus = useSelector((state) => state.libraryStatus.status);
   const dispatch = useDispatch();
   return (
