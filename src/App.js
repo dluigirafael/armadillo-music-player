@@ -1,27 +1,21 @@
 import React from "react";
 import "./style/app.scss";
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useRef } from "react";
 
-import Test from "./components/Test";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
 import Data from "./data";
 
-import {
-  increaseCounter,
-  decreaseCounter,
-  resetCounter,
-} from "./redux/Counter/counter.actions";
-
 function App(reduxProps) {
+  const libraryStatus = useSelector((state) => state.libraryStatus.status);
+
   const [songs, setSongs] = useState(Data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [libraryStatus, setLibraryStatus] = useState(false);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
@@ -30,12 +24,7 @@ function App(reduxProps) {
 
   const audioRef = useRef(null);
   return (
-    <div
-      className={`App ${reduxProps.libraryStatus ? " library-active" : " "}`}
-    >
-      <div>Count: {reduxProps.count}</div>
-      <div>Input: {reduxProps.input}</div>
-      <Test />
+    <div className={`App ${libraryStatus ? " library-active" : " "}`}>
       <Nav />
       <Song currentSong={currentSong} />
       <Player
@@ -60,21 +49,6 @@ function App(reduxProps) {
     </div>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    count: state.counter.count,
-    input: state.input.inputVal,
-    libraryStatus: state.libraryStatus.status,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increaseCounter: () => dispatch(increaseCounter()),
-    decreaseCounter: () => dispatch(decreaseCounter()),
-    resetCounter: () => dispatch(resetCounter()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 // export default App;

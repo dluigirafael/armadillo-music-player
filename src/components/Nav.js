@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { switchLibraryStatus } from "../redux/LibraryStatus/libraryStatus.actions";
 
@@ -6,15 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
 function Nav(reduxProps) {
+  const libraryStatus = useSelector((state) => state.libraryStatus.status);
+  const dispatch = useDispatch();
   return (
     <nav>
-      <h1>Waves {reduxProps.libraryStatus}</h1>
+      <h1>Waves {libraryStatus}</h1>
 
-      <button
-        onClick={() =>
-          reduxProps.switchLibraryStatus(!reduxProps.libraryStatus)
-        }
-      >
+      <button onClick={() => dispatch(switchLibraryStatus(!libraryStatus))}>
         Library
         <FontAwesomeIcon icon={faMusic} />
       </button>
@@ -22,16 +20,4 @@ function Nav(reduxProps) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    libraryStatus: state.libraryStatus.status,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    switchLibraryStatus: (status) => dispatch(switchLibraryStatus(status)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default Nav;

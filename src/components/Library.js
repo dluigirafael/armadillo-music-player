@@ -1,15 +1,13 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import LibrarySong from "./LibrarySong";
-// const Library = ({ songs, setCurrentSong, audioRef, isPlaying, setSongs })
-const Library = (reduxProps) => {
+const Library = ({ songs, setCurrentSong, audioRef, isPlaying, setSongs }) => {
+  const libraryStatus = useSelector((state) => state.libraryStatus.status);
   return (
-    <div
-      className={`library ${reduxProps.libraryStatus ? "active-library" : ""} `}
-    >
+    <div className={`library ${libraryStatus ? "active-library" : ""} `}>
       <h2>Library</h2>
       <div className="library-songs">
-        {/* {songs.map((song) => (
+        {songs.map((song) => (
           <LibrarySong
             setCurrentSong={setCurrentSong}
             song={song}
@@ -19,20 +17,20 @@ const Library = (reduxProps) => {
             isPlaying={isPlaying}
             songs={songs}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    libraryStatus: state.libraryStatus.status,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     libraryStatus: state.libraryStatus.status,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {};
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Library);
+export default Library;
